@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#080c10" />
   <meta name="description" content="Cool Idea — a scroll-controlled cinematic car wash concept. Watch a dirty car transform into a pristine finish." />
   <title>Cool Idea — The Wash Experience</title>
-  <link rel="preload" href="assets/dirty.webp" as="image" type="image/webp" />
+  <link rel="preload" href="Assets/dirty.webp" as="image" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
@@ -25,13 +25,13 @@
         <div class="backdrop-blur" aria-hidden="true"></div>
         <div class="visual" aria-hidden="true">
           <div class="still-stack" id="stillStack">
-            <img class="still first" src="assets/dirty.webp" alt="" fetchpriority="high" />
-            <img class="still" src="assets/foam.webp" alt="" loading="eager" />
-            <img class="still" src="assets/rinse.webp" alt="" loading="eager" />
-            <img class="still" src="assets/clean.webp" alt="" loading="eager" />
+            <img class="still first" src="Assets/dirty.webp" alt="" fetchpriority="high" />
+            <img class="still" src="Assets/foam.webp" alt="" loading="eager" />
+            <img class="still" src="Assets/rinse.webp" alt="" loading="eager" />
+            <img class="still" src="Assets/clean.webp" alt="" loading="eager" />
           </div>
-          <video id="washVideo" class="wash-video" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true" poster="assets/dirty.webp">
-            <source src="assets/wash-sequence.mp4" type="video/mp4" />
+          <video id="washVideo" class="wash-video" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true" poster="Assets/dirty.webp">
+            <source src="Assets/wash-sequence.mp4" type="video/mp4" />
           </video>
           <div class="wash-mist" id="washMist"></div>
         </div>
@@ -62,8 +62,8 @@
         <div class="section-eyebrow"><span class="eyebrow"><span class="eye-line"></span> THE PROOF</span><span class="corner-coordinates">EST. IN THE DETAILS / 2026</span></div>
         <div class="comparison-intro"><h2>THE DIFFERENCE<br /><em>IS EVERYTHING.</em></h2><p>One car. Two completely different finishes. Drag across the image to reveal the transformation for yourself.</p></div>
         <div class="comparison" id="comparison" style="--split:50%;">
-          <img src="assets/dirty.webp" alt="Mud-covered dark grey car before washing" class="comparison-image" loading="lazy" />
-          <div class="comparison-clean"><img src="assets/clean.webp" alt="The same dark grey car spotless and gleaming after washing" class="comparison-image" loading="lazy" /></div>
+          <img src="Assets/dirty.webp" alt="Mud-covered dark grey car before washing" class="comparison-image" loading="lazy" />
+          <div class="comparison-clean"><img src="Assets/clean.webp" alt="The same dark grey car spotless and gleaming after washing" class="comparison-image" loading="lazy" /></div>
           <span class="compare-chip before-chip">BEFORE</span><span class="compare-chip after-chip">AFTER</span>
           <span class="compare-line" aria-hidden="true"><span class="compare-handle">‹ <b>›</b></span></span>
           <input id="compareSlider" class="compare-control" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after car wash" />
