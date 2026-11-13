@@ -1,82 +1,101 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#080c10" />
-  <meta name="description" content="Cool Idea — a scroll-controlled cinematic car wash concept. Watch a dirty car transform into a pristine finish." />
-  <title>Cool Idea — The Wash Experience</title>
-  <link rel="preload" href="Assets/dirty.webp" as="image" type="image/webp" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070a0e">
+  <meta name="description" content="A premium, scroll-controlled automotive detailing experience: from wash to paint correction, interior deep clean, and lens restoration.">
+  <title>CAR DETAIL — Made Immaculate</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#after">Skip animation</a>
-  <div class="topline" aria-hidden="true"><span id="readingProgress"></span></div>
-  <header class="site-header" aria-label="Website header">
-    <a class="brand" href="#top" aria-label="Cool Idea, back to top"><span class="brand-mark">C<span class="brand-dot">•</span></span><span>COOL<span class="brand-second">IDEA</span></span></a>
-    <span class="header-center">INTERACTIVE AUTOMOTIVE CONCEPT <em> / 001</em></span>
-    <a class="header-link" href="#after">THE RESULT <span aria-hidden="true">↗</span></a>
+  <a class="skip-link" href="#contact">Skip animations</a>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="Car Detail home"><span class="brand-mark" aria-hidden="true">C<span>.</span></span><span>CAR <b>DETAIL</b><small>THE DETAILING STUDIO</small></span></a>
+    <a class="header-cta" href="#contact">ENQUIRE <span aria-hidden="true">↗</span></a>
   </header>
   <main id="top">
-    <section id="experience" class="story-scroll" aria-label="Interactive dirty to clean car wash animation">
-      <div class="sticky-scene">
-        <div class="ambient-glow" aria-hidden="true"></div>
-        <div class="backdrop-blur" aria-hidden="true"></div>
-        <div class="visual" aria-hidden="true">
-          <div class="still-stack" id="stillStack">
-            <img class="still first" src="Assets/dirty.webp" alt="" fetchpriority="high" />
-            <img class="still" src="Assets/foam.webp" alt="" loading="eager" />
-            <img class="still" src="Assets/rinse.webp" alt="" loading="eager" />
-            <img class="still" src="Assets/clean.webp" alt="" loading="eager" />
+    <section id="journey" class="journey" aria-label="Four-stage car detailing experience">
+      <div class="screen">
+        <div class="scene scene-wash" data-scene="wash">
+          <div class="ambient ambient-blue"></div>
+          <div class="environment-lines"></div>
+          <div class="art art-wash" aria-hidden="true">
+            <img src="Assets/wash-01-dirty.webp" class="wash-state state-dirty" alt="">
+            <img src="Assets/wash-02-foam.webp" class="wash-state state-foam" alt="">
+            <img src="Assets/wash-03-rinse.webp" class="wash-state state-rinse" alt="">
+            <img src="Assets/wash-04-clean.webp" class="wash-state state-clean" alt="">
+            <canvas class="water-canvas" aria-hidden="true"></canvas>
+            <div class="studio-floor"></div>
           </div>
-          <video id="washVideo" class="wash-video" muted playsinline preload="metadata" tabindex="-1" aria-hidden="true" poster="Assets/dirty.webp">
-            <source src="Assets/wash-sequence.mp4" type="video/mp4" />
-          </video>
-          <div class="wash-mist" id="washMist"></div>
-        </div>
-        <div class="scene-shading" aria-hidden="true"></div>
-        <div class="scene-intro"><span class="eyebrow"><span class="eye-line"></span> THE WASH EXPERIENCE</span><span class="scene-tag">THE FUTURE IS IN THE DETAIL.</span></div>
-        <div class="story-copy" aria-live="off">
-          <div class="copy-panel is-active" data-step="0"><span class="kicker">01 / THE ARRIVAL</span><h1>DIRTY<br /><em>BY DESIGN.</em></h1><p>Every transformation begins somewhere.</p></div>
-          <div class="copy-panel" data-step="1"><span class="kicker">02 / DEEP CLEAN</span><h2>A BLANKET<br /><em>OF FOAM.</em></h2><p>Every inch. Every detail. Nothing missed.</p></div>
-          <div class="copy-panel" data-step="2"><span class="kicker">03 / THE RINSE</span><h2>WASH AWAY<br /><em>THE ORDINARY.</em></h2><p>Watch the finish come back to life.</p></div>
-          <div class="copy-panel" data-step="3"><span class="kicker">04 / THE REVEAL</span><h2>LIKE<br /><em>NEW AGAIN.</em></h2><p>That just-detailed feeling. Every time.</p></div>
-        </div>
-        <div class="scroll-prompt" id="scrollPrompt" aria-hidden="true"><span>SCROLL TO TRANSFORM</span><span class="scroll-mouse"><i></i></span></div>
-        <div class="scene-bottom">
-          <div class="phase-track" aria-label="Wash transformation stages">
-            <div class="phase is-current" data-phase="0"><span class="phase-n">01</span><span>DIRTY</span><i></i></div>
-            <div class="phase" data-phase="1"><span class="phase-n">02</span><span>FOAM</span><i></i></div>
-            <div class="phase" data-phase="2"><span class="phase-n">03</span><span>RINSE</span><i></i></div>
-            <div class="phase" data-phase="3"><span class="phase-n">04</span><span>SHINE</span><i></i></div>
+          <div class="story">
+            <div class="eyebrow">EXTERIOR CARE <span></span> THE TRANSFORMATION</div>
+            <h1>FROM ROAD-WORN.<br><em>TO REMARKABLE.</em></h1>
+            <p>Every immaculate finish begins with a clean slate.</p>
           </div>
-          <div class="sequence-count"><span id="countStage">01</span> <small>/ 04</small></div>
+          <div class="service"><span class="service-eyebrow">EXTERIOR WASH</span><span class="service-name">Mini Detail</span><strong>€90</strong></div>
+          <div class="scroll-hint">SCROLL TO TRANSFORM <span aria-hidden="true">↓</span></div>
         </div>
-        <span class="edge-label" aria-hidden="true">DESIGNED TO BE FELT, NOT JUST SEEN</span>
+        <div class="scene scene-polish" data-scene="polish">
+          <div class="ambient ambient-blue"></div>
+          <div class="art art-polish" aria-hidden="true">
+            <img src="Assets/wash-04-clean.webp" class="polish-wide" alt="">
+            <div class="paint-world">
+              <img src="Assets/paint-scratched.webp" class="paint-layer paint-scratch" alt="">
+              <img src="Assets/paint-buffing.webp" class="paint-layer paint-work" alt="">
+              <img src="Assets/paint-finished.webp" class="paint-layer paint-finish" alt="">
+              <div class="light-sweep"></div>
+            </div>
+            <img src="Assets/polish-tool.webp" class="tool polish-buffer" alt="">
+          </div>
+          <div class="story">
+            <div class="eyebrow">PRECISION PAINT CORRECTION</div>
+            <h2>CLOSER.<br><em>TO PERFECTION.</em></h2>
+            <p>Every swirl mark removed. Every reflection restored.</p>
+          </div>
+          <div class="service"><span class="service-eyebrow">PAINT CORRECTION</span><span class="service-name">Full Detail</span><strong>€200</strong></div>
+        </div>
+        <div class="scene scene-interior" data-scene="interior">
+          <div class="ambient ambient-slate"></div>
+          <div class="art art-interior" aria-hidden="true">
+            <img src="Assets/wash-04-clean.webp" class="enter-car" alt="">
+            <div class="inside-view">
+              <img src="Assets/interior-dirty.webp" class="inside-img before" alt="">
+              <img src="Assets/interior-clean.webp" class="inside-img after" alt="">
+              <img src="Assets/vacuum-tool.webp" class="tool vacuum-tool" alt="">
+            </div>
+          </div>
+          <div class="story">
+            <div class="eyebrow">INTERIOR CARE <span></span> STEP INSIDE</div>
+            <h2>NOT A CORNER<br><em>OVERLOOKED.</em></h2>
+            <p>From the seat stitching to the last grain of dust.</p>
+          </div>
+          <div class="service"><span class="service-eyebrow">INTERIOR DEEP CLEAN</span><span class="service-name">Deep Vacuum</span><strong>EXTRA</strong></div>
+        </div>
+        <div class="scene scene-tail" data-scene="tail">
+          <div class="ambient ambient-red"></div>
+          <div class="art art-tail" aria-hidden="true">
+            <div class="rear-zoom"><img src="Assets/tail-dirty.webp" class="tail-image before" alt=""><img src="Assets/tail-clean.webp" class="tail-image after" alt=""></div>
+            <div class="tail-glint"></div>
+          </div>
+          <div class="story">
+            <div class="eyebrow">THE FINAL DETAIL <span></span> LENS RESTORATION</div>
+            <h2>EVERY DETAIL.<br><em>REDEFINED.</em></h2>
+            <p>Renew clarity. Refine the finish. Leave nothing behind.</p>
+          </div>
+          <div class="service"><span class="service-eyebrow">LENS RESTORATION</span><span class="service-name">Taillight Revival</span><strong>EXTRA</strong></div>
+        </div>
+        <div class="screen-shade" aria-hidden="true"></div>
       </div>
     </section>
-
-    <section id="after" class="comparison-section">
-      <div class="comparison-inner">
-        <div class="section-eyebrow"><span class="eyebrow"><span class="eye-line"></span> THE PROOF</span><span class="corner-coordinates">EST. IN THE DETAILS / 2026</span></div>
-        <div class="comparison-intro"><h2>THE DIFFERENCE<br /><em>IS EVERYTHING.</em></h2><p>One car. Two completely different finishes. Drag across the image to reveal the transformation for yourself.</p></div>
-        <div class="comparison" id="comparison" style="--split:50%;">
-          <img src="Assets/dirty.webp" alt="Mud-covered dark grey car before washing" class="comparison-image" loading="lazy" />
-          <div class="comparison-clean"><img src="Assets/clean.webp" alt="The same dark grey car spotless and gleaming after washing" class="comparison-image" loading="lazy" /></div>
-          <span class="compare-chip before-chip">BEFORE</span><span class="compare-chip after-chip">AFTER</span>
-          <span class="compare-line" aria-hidden="true"><span class="compare-handle">‹ <b>›</b></span></span>
-          <input id="compareSlider" class="compare-control" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after car wash" />
-        </div>
-        <div class="comparison-foot"><span>01 — BEFORE / 02 — AFTER</span><span>DRAG TO EXPLORE <span aria-hidden="true">↔</span></span></div>
-      </div>
-    </section>
-
-    <section class="end-section" aria-label="Restart animation">
-      <span class="eyebrow"><span class="eye-line"></span> NOT JUST A WASH. A TRANSFORMATION.</span>
-      <h2>SCROLL.<br /><em>WASH.</em><br />WOW.</h2>
-      <a href="#experience" class="replay-button" id="replay">REPLAY THE EXPERIENCE <span aria-hidden="true">↗</span></a>
-      <span class="end-mark">COOL IDEA <span>© 2026 · DESIGN DEMO</span></span>
+    <section class="closing" id="contact">
+      <span class="ending-label">CARE IS IN THE DETAILS</span>
+      <h2>IMMACULATE.<br><em>BY DESIGN.</em></h2>
+      <p>Exterior. Paint. Interior. Every last detail.</p>
+      <div class="contact-note">CONTACT LINKS READY TO CONNECT — ADD YOUR EMAIL AND WHATSAPP NUMBER BEFORE PUBLISHING</div>
+      <div class="contact-actions"><a href="mailto:YOUR-EMAIL@example.com?subject=Car%20detailing%20enquiry" class="action">ENQUIRE BY EMAIL <span>↗</span></a><a href="https://wa.me/353000000000?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20detailing" class="action subtle" target="_blank" rel="noopener noreferrer">WHATSAPP <span>↗</span></a></div>
+      <footer><span>CAR DETAIL</span><span>PROFESSIONAL CAR CARE · IRELAND</span></footer>
     </section>
   </main>
 </body>
