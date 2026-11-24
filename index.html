@@ -28,15 +28,16 @@
     </div>
   </header>
   <main id="top">
-    <section class="hero film-scroll" data-film="orbit" aria-label="Greg’s Details cinematic introduction">
+    <div class="sequence">
+    <section class="hero film-scroll" data-film="rear-orbit" aria-label="Greg’s Details cinematic introduction">
       <div class="hero-stage shell scene-screen orbit-screen">
         <canvas class="surround" width="224" height="128" aria-hidden="true"></canvas>
         <div class="hero-media">
           <div class="film-media">
             <picture class="film-poster">
               <source media="(prefers-reduced-motion: reduce)" srcset="media/rear_poster.webp">
-              <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/orbit-phone.webp">
-              <img src="media/orbit-desktop.webp" width="1280" height="720" fetchpriority="high" alt="Black Mercedes S-Class outlined by cyan studio lighting">
+              <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/rear-orbit-phone.webp">
+              <img src="media/rear-orbit-desktop.webp" width="1280" height="720" fetchpriority="high" alt="Rear quarter of a black Mercedes S-Class emerging under cyan lights">
             </picture>
             <video muted playsinline preload="auto" aria-hidden="true" disablepictureinpicture></video>
           </div>
@@ -44,9 +45,9 @@
         <div class="hero-copy">
           <div class="chapters">
             <div class="chapter glass-panel">
-              <p class="eyebrow">Greg’s Details · Exterior</p>
+              <p class="eyebrow">Greg’s Details · Rear quarter</p>
               <h1>Out of the dark.</h1>
-              <p class="annotation">The first light catches the grille and picks out the edge of the bonnet.</p>
+              <p class="annotation">First the tail lamps, then the curve of the rear wing as the studio lights rise.</p>
             </div>
             <div class="chapter glass-panel">
               <p class="eyebrow">Bodywork · Side profile</p>
@@ -54,14 +55,43 @@
               <p class="annotation">Watch the blue line travel along the doors as the car turns.</p>
             </div>
             <div class="chapter glass-panel">
-              <p class="eyebrow">Bodywork · Rear quarter</p>
-              <h2>The final angle.</h2>
-              <p class="annotation">The tail lamps come into view. Explore the care behind the finish.</p>
-              <a class="button hero-action" href="#services">Explore the Product <span aria-hidden="true">↓</span></a>
+              <p class="eyebrow">Bodywork · Front quarter</p>
+              <h2>Across the bonnet.</h2>
+              <p class="annotation">Follow the light over the bonnet to see the fine swirl marks in the paint.</p>
+              <a class="button hero-action" href="#paint">Explore the Product <span aria-hidden="true">↓</span></a>
             </div>
           </div>
         </div>
         <div class="hero-rail" aria-hidden="true"><span>SCROLL TO PLAY</span><span class="track"><i></i></span><span class="film-number">01 / 03</span></div>
+      </div>
+    </section>
+
+      <section class="paint-scroll film-scroll" id="paint" aria-labelledby="paint-title" data-film="bonnet">
+        <div class="paint-stage shell scene-screen polish-screen">
+          <canvas class="surround" width="224" height="128" aria-hidden="true"></canvas>
+          <div class="scene-heading glass-panel">
+            <p class="eyebrow">Paint correction</p>
+            <h2 id="paint-title">Read the<br>reflection.</h2>
+            <p>Direct light makes fine swirls visible. Follow the reflection across the bonnet to see the difference paint correction is intended to make.</p>
+          </div>
+          <figure class="scene-image">
+            <div class="film-media">
+              <picture class="film-poster">
+                <source media="(prefers-reduced-motion: reduce)" srcset="media/polish_after.webp">
+                <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/bonnet-phone.webp">
+                <img src="media/bonnet-desktop.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Studio light reflected in the black bonnet of a Mercedes">
+              </picture>
+              <video muted playsinline preload="auto" aria-hidden="true" disablepictureinpicture></video>
+            </div>
+            <figcaption>Paint correction illustration</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+    <section class="paint-section" aria-label="Before and after paint correction">
+      <div class="comparison shell" role="group" aria-label="Illustrative paint correction comparison">
+        <figure><img src="media/polish_before.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Fine circular marks visible around a bright reflection on the bonnet"><figcaption>Before <span>Visible swirl marks</span></figcaption></figure>
+        <figure><img src="media/polish_after.webp" width="1280" height="720" loading="lazy" decoding="async" alt="The reflected light on smoother-looking paintwork"><figcaption>After <span>Clearer reflection</span></figcaption></figure>
       </div>
     </section>
 
@@ -86,34 +116,6 @@
         <p class="eyebrow">Interior care</p>
         <h2 id="interior-title">Where you<br>feel the detail.</h2>
         <p>The cabin is the part of the car you live with. Interior care brings attention to the surfaces you sit on, reach for and touch on every drive.</p>
-      </div>
-    </section>
-
-    <section class="paint-section" id="paint" aria-labelledby="paint-title">
-      <div class="paint-scroll film-scroll" data-film="polish">
-        <div class="paint-stage shell scene-screen polish-screen">
-          <canvas class="surround" width="224" height="128" aria-hidden="true"></canvas>
-          <div class="scene-heading glass-panel">
-            <p class="eyebrow">Paint correction</p>
-            <h2 id="paint-title">Read the<br>reflection.</h2>
-            <p>Direct light makes fine swirls visible. Follow the reflection across the bonnet to see the difference paint correction is intended to make.</p>
-          </div>
-          <figure class="scene-image">
-            <div class="film-media">
-              <picture class="film-poster">
-                <source media="(prefers-reduced-motion: reduce)" srcset="media/polish_after.webp">
-                <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/polish-phone.webp">
-                <img src="media/polish-desktop.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Studio light reflected in the black bonnet of a Mercedes">
-              </picture>
-              <video muted playsinline preload="auto" aria-hidden="true" disablepictureinpicture></video>
-            </div>
-            <figcaption>Paint correction illustration</figcaption>
-          </figure>
-        </div>
-      </div>
-      <div class="comparison shell" role="group" aria-label="Illustrative paint correction comparison">
-        <figure><img src="media/polish_before.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Fine circular marks visible around a bright reflection on the bonnet"><figcaption>Before <span>Visible swirl marks</span></figcaption></figure>
-        <figure><img src="media/polish_after.webp" width="1280" height="720" loading="lazy" decoding="async" alt="The reflected light on smoother-looking paintwork"><figcaption>After <span>Clearer reflection</span></figcaption></figure>
       </div>
     </section>
 

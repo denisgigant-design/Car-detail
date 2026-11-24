@@ -266,3 +266,25 @@ figcaption { color: var(--muted); border-top: 1px solid var(--line); padding-top
   .scene-screen .annotation { margin-top: 7px; }
   .scene-screen .hero-action { margin-top: 9px; min-height: 34px; padding-block: 6px; }
 }
+
+/* Pin the front angle behind the bonnet until the detail film takes over. */
+.enhanced .sequence .hero {
+  position: sticky;
+  top: -320svh;
+}
+.enhanced .sequence .paint-scroll {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--header) - 100svh);
+  scroll-margin-top: -18svh;
+  pointer-events: none;
+}
+.enhanced .sequence .polish-screen {
+  opacity: var(--bonnet-opacity, 0);
+}
+.enhanced .sequence .hero-copy, .enhanced .sequence .hero-rail {
+  opacity: var(--orbit-copy, 1);
+}
+.enhanced .sequence .polish-screen .glass-panel {
+  opacity: var(--paint-copy, 0);
+}

@@ -77,7 +77,7 @@
     const orbit = films[0];
     const chapterPosition = orbit.frameTime === null || !orbit.video.duration
       ? progress : (orbit.frameTime / (orbit.video.duration - 1 / 24)) * 0.83;
-    const breaks = [0.28, 0.73];
+    const breaks = [0.27, 0.67];
     const focused = chapters.findIndex(chapter => chapter.contains(document.activeElement));
     const index = focused >= 0 ? focused : chapterPosition < breaks[0] ? 0 : chapterPosition < breaks[1] ? 1 : 2;
     const boundary = Math.min(...breaks.map(point => Math.abs(chapterPosition - point)));
@@ -105,9 +105,20 @@
         const header = document.querySelector('.masthead').offsetHeight;
         film.progress = clamp((header - top) / interval);
         if (section === hero) showChapter(film.progress);
-        const substantial = section === hero ? 0.83 : 0.95;
+        const incoming = section !== hero;
+        // Give the front view a short dissolve into the first still frame of the bonnet.
+        const dissolve = incoming ? clamp(film.progress / 0.085) : 0;
+        if (incoming) {
+          section.style.setProperty('--bonnet-opacity', dissolve);
+          section.style.setProperty('--paint-copy', clamp(2 * dissolve - 1));
+          hero.style.setProperty('--orbit-copy', clamp(1 - 2 * dissolve));
+          section.style.pointerEvents = dissolve < 0.5 ? 'none' : 'auto';
+          hero.inert = dissolve >= 0.5;
+        }
+        const substantial = incoming ? 0.95 : 0.83;
+        const start = incoming ? 0.085 : 0;
         const end = Math.max(0, (film.video.duration || 0) - 1 / 24);
-        film.target = clamp(film.progress / substantial) * end;
+        film.target = clamp((film.progress - start) / (substantial - start)) * end;
       }
       if (!film.ready || film.video.seeking) continue;
       const gap = film.target - film.video.currentTime;
@@ -224,6 +235,8 @@
     observed?.disconnect();
     root.classList.toggle('enhanced', !motion.matches);
     if (motion.matches) {
+      hero.inert = false;
+      films[1].section.style.pointerEvents = '';
       for (const chapter of chapters) {
         chapter.inert = false;
         chapter.removeAttribute('aria-hidden');
