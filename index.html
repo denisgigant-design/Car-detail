@@ -29,7 +29,8 @@
   </header>
   <main id="top">
     <section class="hero film-scroll" data-film="orbit" aria-label="Greg’s Details cinematic introduction">
-      <div class="hero-stage shell">
+      <div class="hero-stage shell scene-screen orbit-screen">
+        <canvas class="surround" width="224" height="128" aria-hidden="true"></canvas>
         <div class="hero-media">
           <div class="film-media">
             <picture class="film-poster">
@@ -42,25 +43,25 @@
         </div>
         <div class="hero-copy">
           <div class="chapters">
-            <div class="chapter">
-              <p class="eyebrow">Greg’s Details <span> / </span> High-end car detailing</p>
-              <h1>Every line.<br>Every detail.</h1>
-              <p>Discover the care behind the finish.</p>
+            <div class="chapter glass-panel">
+              <p class="eyebrow">Greg’s Details · Exterior</p>
+              <h1>Out of the dark.</h1>
+              <p class="annotation">The first light catches the grille and picks out the edge of the bonnet.</p>
             </div>
-            <div class="chapter">
-              <p class="eyebrow">The profile</p>
-              <h2>Follow the light.</h2>
-              <p>As the light moves across the bodywork, every contour comes into view.</p>
+            <div class="chapter glass-panel">
+              <p class="eyebrow">Bodywork · Side profile</p>
+              <h2>Follow the reflection.</h2>
+              <p class="annotation">Watch the blue line travel along the doors as the car turns.</p>
             </div>
-            <div class="chapter">
-              <p class="eyebrow">The finish</p>
-              <h2>Look closer.</h2>
-              <p>From the paintwork to the cabin, see what goes into the detail.</p>
-              <a class="button" href="#services">Explore the Product <span aria-hidden="true">↓</span></a>
+            <div class="chapter glass-panel">
+              <p class="eyebrow">Bodywork · Rear quarter</p>
+              <h2>The final angle.</h2>
+              <p class="annotation">The tail lamps come into view. Explore the care behind the finish.</p>
+              <a class="button hero-action" href="#services">Explore the Product <span aria-hidden="true">↓</span></a>
             </div>
           </div>
         </div>
-        <div class="hero-rail" aria-hidden="true"><span>SCROLL TO EXPLORE</span><span class="track"><i></i></span><span class="film-number">01 / 03</span></div>
+        <div class="hero-rail" aria-hidden="true"><span>SCROLL TO PLAY</span><span class="track"><i></i></span><span class="film-number">01 / 03</span></div>
       </div>
     </section>
 
@@ -90,8 +91,9 @@
 
     <section class="paint-section" id="paint" aria-labelledby="paint-title">
       <div class="paint-scroll film-scroll" data-film="polish">
-        <div class="paint-stage shell">
-          <div class="scene-heading">
+        <div class="paint-stage shell scene-screen polish-screen">
+          <canvas class="surround" width="224" height="128" aria-hidden="true"></canvas>
+          <div class="scene-heading glass-panel">
             <p class="eyebrow">Paint correction</p>
             <h2 id="paint-title">Read the<br>reflection.</h2>
             <p>Direct light makes fine swirls visible. Follow the reflection across the bonnet to see the difference paint correction is intended to make.</p>

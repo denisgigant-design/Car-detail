@@ -13,6 +13,9 @@
     stage: section.firstElementChild,
     media: section.querySelector('.film-media'),
     video: section.querySelector('video'),
+    poster: section.querySelector('.film-poster img'),
+    surround: section.querySelector('.surround'),
+    frameTime: null,
     progress: 0,
     target: 0
   }));
@@ -35,11 +38,49 @@
     wake();
   }
 
+  // Extend the edge colours of the same decoded frame into the space around it.
+  function paintSurround(film, source) {
+    const w = source.videoWidth || source.naturalWidth;
+    const h = source.videoHeight || source.naturalHeight;
+    if (!w || !h) return;
+    const canvas = film.surround;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const stage = film.stage.getBoundingClientRect();
+    const frame = film.media.getBoundingClientRect();
+    if (!stage.width || !stage.height) return;
+    const height = Math.max(1, Math.round(canvas.width * stage.height / stage.width));
+    if (canvas.height !== height) canvas.height = height;
+    const x = canvas.width / stage.width;
+    const y = height / stage.height;
+    const dx = [0, (frame.left - stage.left) * x, (frame.right - stage.left) * x, canvas.width];
+    const dy = [0, (frame.top - stage.top) * y, (frame.bottom - stage.top) * y, height];
+    const sx = [0, 1, w - 1, w];
+    const sy = [0, 1, h - 1, h];
+    for (let row = 0; row < 3; row++) {
+      for (let col = 0; col < 3; col++) {
+        if (dx[col + 1] <= dx[col] || dy[row + 1] <= dy[row]) continue;
+        ctx.drawImage(source, sx[col], sy[row], sx[col+1]-sx[col], sy[row+1]-sy[row],
+          dx[col], dy[row], dx[col+1]-dx[col], dy[row+1]-dy[row]);
+      }
+    }
+  }
+
+  for (const film of films) {
+    const refresh = () => paintSurround(film, film.media.classList.contains('is-painted') ? film.video : film.poster);
+    film.poster.addEventListener('load', refresh);
+    new ResizeObserver(refresh).observe(film.stage);
+    refresh();
+  }
+
   function showChapter(progress) {
+    const orbit = films[0];
+    const chapterPosition = orbit.frameTime === null || !orbit.video.duration
+      ? progress : (orbit.frameTime / (orbit.video.duration - 1 / 24)) * 0.83;
     const breaks = [0.28, 0.73];
     const focused = chapters.findIndex(chapter => chapter.contains(document.activeElement));
-    const index = focused >= 0 ? focused : progress < breaks[0] ? 0 : progress < breaks[1] ? 1 : 2;
-    const boundary = Math.min(...breaks.map(point => Math.abs(progress - point)));
+    const index = focused >= 0 ? focused : chapterPosition < breaks[0] ? 0 : chapterPosition < breaks[1] ? 1 : 2;
+    const boundary = Math.min(...breaks.map(point => Math.abs(chapterPosition - point)));
     const opacity = 0.65 + 0.35 * clamp(boundary / 0.024);
     chapters.forEach((chapter, number) => {
       const visible = number === index;
@@ -87,6 +128,8 @@
   function still(film) {
     film.ready = false;
     film.media.classList.remove('is-painted');
+    film.frameTime = null;
+    paintSurround(film, film.poster);
     clearTimeout(film.watchdog);
     if (film.callback && film.video.cancelVideoFrameCallback) {
       film.video.cancelVideoFrameCallback(film.callback);
@@ -116,6 +159,9 @@
       if (token !== version || !film.ready) return;
       if (!appleTouch || (film.unlocked && frame.mediaTime > 1 / 24)) {
         media.classList.add('is-painted');
+        film.frameTime = frame.mediaTime;
+        paintSurround(film, video);
+        if (film.section === hero) showChapter(film.progress);
       }
       if (frame.mediaTime > 1 / 24) {
         film.seekVerified = true;
@@ -152,6 +198,11 @@
       video.addEventListener('loadeddata', handleReady, { signal: controller.signal });
       video.addEventListener('error', () => still(film), { signal: controller.signal });
       video.addEventListener('seeked', () => {
+        if (!video.requestVideoFrameCallback && film.media.classList.contains('is-painted')) {
+          film.frameTime = video.currentTime;
+          paintSurround(film, video);
+          if (section === hero) showChapter(film.progress);
+        }
         if (appleTouch && film.unlocked && !film.seekVerified && !film.watchdog && film.target > 0.15) {
           film.watchdog = setTimeout(() => still(film), 2200);
         }
