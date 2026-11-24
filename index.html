@@ -8,7 +8,7 @@
   <meta property="og:title" content="Greg’s Details | High-end car detailing">
   <meta property="og:description" content="Exterior wash, interior care, paint correction and headlight restoration. Explore the details.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="media/closing_hero.webp">
+  <meta property="og:image" content="closing_hero.webp">
   <title>Greg’s Details | High-end car detailing</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath fill=%27%23080d10%27 d=%27M0 0h24v24H0z%27/%3E%3Cpath fill=%27%2352d7f8%27 d=%27M7 7h10v10H7z%27/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
@@ -35,34 +35,33 @@
         <div class="hero-media">
           <div class="film-media">
             <picture class="film-poster">
-              <source media="(prefers-reduced-motion: reduce)" srcset="media/rear_poster.webp">
-              <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/rear-orbit-phone.webp">
-              <img src="media/rear-orbit-desktop.webp" width="1280" height="720" fetchpriority="high" alt="Rear quarter of a black Mercedes S-Class emerging under cyan lights">
+              <source media="(prefers-reduced-motion: reduce)" srcset="tour-rear-desktop.webp">
+              <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="tour-rear-phone.webp">
+              <img src="tour-rear-desktop.webp" width="1280" height="720" fetchpriority="high" alt="Rear quarter of a black Mercedes S-Class emerging under cyan lights">
             </picture>
             <video muted playsinline preload="auto" aria-hidden="true" disablepictureinpicture></video>
           </div>
         </div>
+        <button class="car-pin" type="button" aria-label="Explore headlight and taillight restoration">+</button>
         <div class="hero-copy">
           <div class="chapters">
             <div class="chapter glass-panel">
-              <p class="eyebrow">Greg’s Details · Rear quarter</p>
-              <h1>Out of the dark.</h1>
-              <p class="annotation">First the tail lamps, then the curve of the rear wing as the studio lights rise.</p>
+              <p class="eyebrow">Greg’s Details</p>
+              <h1>Explore the detail.</h1>
+              <p class="annotation">Tour the car from rear to front. Select a marker to see the work up close.</p>
+              <button class="hotspot" data-service="lamp-dialog" aria-haspopup="dialog">Headlight &amp; taillight restoration</button>
             </div>
             <div class="chapter glass-panel">
-              <p class="eyebrow">Bodywork · Side profile</p>
-              <h2>Follow the reflection.</h2>
-              <p class="annotation">Watch the blue line travel along the doors as the car turns.</p>
+              <p class="eyebrow">Cabin care</p><h2>Inside the cabin.</h2>
+              <button class="hotspot" data-service="cabin-dialog" aria-haspopup="dialog">Interior detailing</button>
             </div>
             <div class="chapter glass-panel">
-              <p class="eyebrow">Bodywork · Front quarter</p>
-              <h2>Across the bonnet.</h2>
-              <p class="annotation">Follow the light over the bonnet to see the fine swirl marks in the paint.</p>
-              <a class="button hero-action" href="#paint">Explore the Product <span aria-hidden="true">↓</span></a>
+              <p class="eyebrow">Paint correction</p><h2>Across the bonnet.</h2>
+              <a class="hotspot" href="#paint">Paint polishing</a>
             </div>
           </div>
         </div>
-        <div class="hero-rail" aria-hidden="true"><span>SCROLL TO PLAY</span><span class="track"><i></i></span><span class="film-number">01 / 03</span></div>
+        <div class="hero-rail" aria-hidden="true"><span>SCROLL TO EXPLORE</span><span class="track"><i></i></span><span class="film-number">01 / 03</span></div>
       </div>
     </section>
 
@@ -77,9 +76,9 @@
           <figure class="scene-image">
             <div class="film-media">
               <picture class="film-poster">
-                <source media="(prefers-reduced-motion: reduce)" srcset="media/polish_after.webp">
-                <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="media/bonnet-phone.webp">
-                <img src="media/bonnet-desktop.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Studio light reflected in the black bonnet of a Mercedes">
+                <source media="(prefers-reduced-motion: reduce)" srcset="polish_after.webp">
+                <source media="(max-width: 767px), (pointer: coarse) and (max-width: 950px)" srcset="bonnet-phone.webp">
+                <img src="bonnet-desktop.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Studio light reflected in the black bonnet of a Mercedes">
               </picture>
               <video muted playsinline preload="auto" aria-hidden="true" disablepictureinpicture></video>
             </div>
@@ -90,8 +89,8 @@
     </div>
     <section class="paint-section" aria-label="Before and after paint correction">
       <div class="comparison shell" role="group" aria-label="Illustrative paint correction comparison">
-        <figure><img src="media/polish_before.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Fine circular marks visible around a bright reflection on the bonnet"><figcaption>Before <span>Visible swirl marks</span></figcaption></figure>
-        <figure><img src="media/polish_after.webp" width="1280" height="720" loading="lazy" decoding="async" alt="The reflected light on smoother-looking paintwork"><figcaption>After <span>Clearer reflection</span></figcaption></figure>
+        <figure><img src="polish_before.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Fine circular marks visible around a bright reflection on the bonnet"><figcaption>Before <span>Visible swirl marks</span></figcaption></figure>
+        <figure><img src="polish_after.webp" width="1280" height="720" loading="lazy" decoding="async" alt="The reflected light on smoother-looking paintwork"><figcaption>After <span>Clearer reflection</span></figcaption></figure>
       </div>
     </section>
 
@@ -102,14 +101,14 @@
         <p>Road film settles into the lines of a car. Exterior washing brings the bodywork back into view, from broad panels to the edges and recesses.</p>
       </div>
       <figure class="scene-image">
-        <img src="media/exterior_wash.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Foam and a wash mitt at work on dark bodywork under cyan studio lights">
+        <img src="exterior_wash.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Foam and a wash mitt at work on dark bodywork under cyan studio lights">
         <figcaption>Exterior wash illustration</figcaption>
       </figure>
     </section>
 
     <section class="scene interior shell" id="interior" aria-labelledby="interior-title">
       <figure class="scene-image">
-        <img src="media/interior_detail.webp" width="830" height="465" loading="lazy" decoding="async" alt="Pale stitched seats, center console and dashboard in a dark luxury cabin">
+        <img src="interior_detail.webp" width="830" height="465" loading="lazy" decoding="async" alt="Pale stitched seats, center console and dashboard in a dark luxury cabin">
         <figcaption>Interior care illustration</figcaption>
       </figure>
       <div class="scene-heading">
@@ -126,22 +125,41 @@
         <p>Clouding softens the look of a headlight lens. Restoration focuses on the lens itself, where haze can obscure the contours beneath.</p>
       </div>
       <figure class="scene-image">
-        <img src="media/headlight_restoration.webp" width="830" height="345" loading="lazy" decoding="async" alt="Split illustration of a hazy headlight lens and a clear lens">
+        <img src="headlight_restoration.webp" width="830" height="345" loading="lazy" decoding="async" alt="Split illustration of a hazy headlight lens and a clear lens">
         <figcaption><span>Before</span><span>After</span></figcaption>
       </figure>
     </section>
 
     <section class="closing" aria-labelledby="closing-title">
       <div class="shell closing-grid">
-        <img src="media/closing_hero.webp" width="830" height="463" loading="lazy" decoding="async" alt="Full black Mercedes S-Class in a reflective studio with cyan lights">
+        <img src="closing_hero.webp" width="830" height="463" loading="lazy" decoding="async" alt="Full black Mercedes S-Class in a reflective studio with cyan lights">
         <div class="scene-heading">
           <p class="eyebrow">Greg’s Details</p>
           <h2 id="closing-title">Take a<br>closer look.</h2>
-          <a class="button" href="#services">Explore the Product <span aria-hidden="true">↗</span></a>
+          <a class="button" href="#services">Explore the services <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
+  <dialog id="lamp-dialog" aria-labelledby="lamp-title">
+    <form method="dialog"><button aria-label="Close restoration details">×</button></form>
+    <p class="eyebrow">Lens restoration</p><h2 id="lamp-title">Headlights &amp; taillights</h2>
+    <p>Look at the lines inside the rear lamp. Surface haze softens their edges. Polishing the outer lens brings those lines back into focus.</p>
+    <div class="service-gallery"><figure><img src="tail-dirty.webp" alt="Rear lamp before restoration"><figcaption>Before polishing</figcaption></figure><figure><img src="tail-clean.webp" alt="Rear lamp after restoration"><figcaption>After polishing</figcaption></figure></div>
+    <img class="detail-wide" src="headlight_restoration.webp" alt="Headlight comparison showing haze and clarity side by side">
+  </dialog>
+  <dialog id="cabin-dialog" aria-labelledby="cabin-title">
+    <form method="dialog"><button aria-label="Close interior details">×</button></form>
+    <p class="eyebrow">Interior detailing</p><h2 id="cabin-title">Inside the cabin</h2>
+    <p>Seat seams, carpets and the edges of the centre console collect grit. Vacuuming lifts loose debris before the upholstery and contact surfaces are cleaned.</p>
+    <div class="service-gallery">
+      <figure><img src="interior-dirty.webp" alt="Cabin before cleaning"><figcaption>Before cleaning</figcaption></figure>
+      <figure><img src="interior-clean.webp" alt="Cabin after cleaning"><figcaption>After cleaning</figcaption></figure>
+      <figure><img src="cabin-care.webp" alt="Detail work on the upholstery"><figcaption>Upholstery care</figcaption></figure>
+      <figure><img src="cabin-tools.webp" alt="Detail cleaning inside the cabin"><figcaption>Cabin detailing</figcaption></figure>
+    </div>
+    <img class="detail-wide" src="seat-seams.webp" alt="Soft brush lifting debris from the stitching of a cream leather seat">
+  </dialog>
   <footer class="shell footer">
     <a class="wordmark" href="#top"><span>GREG’S</span> DETAILS<span class="dot" aria-hidden="true"></span></a>
     <p>Campaign visuals are illustrative.</p>

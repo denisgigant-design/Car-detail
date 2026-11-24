@@ -73,13 +73,35 @@
     refresh();
   }
 
+  // The first second of the source is a fade from black.
+  const rearStart = 1;
+  const pin = hero.querySelector('.car-pin');
+  let pinIndex = 0;
+  pin.addEventListener('click', () => chapters[pinIndex].querySelector('.hotspot').click());
   function showChapter(progress) {
     const orbit = films[0];
     const chapterPosition = orbit.frameTime === null || !orbit.video.duration
-      ? progress : (orbit.frameTime / (orbit.video.duration - 1 / 24)) * 0.83;
+      ? progress : (Math.max(0, orbit.frameTime - rearStart) / (orbit.video.duration - rearStart - 1 / 24)) * 0.83;
     const breaks = [0.27, 0.67];
-    const focused = chapters.findIndex(chapter => chapter.contains(document.activeElement));
-    const index = focused >= 0 ? focused : chapterPosition < breaks[0] ? 0 : chapterPosition < breaks[1] ? 1 : 2;
+    const index = chapterPosition < breaks[0] ? 0 : chapterPosition < breaks[1] ? 1 : 2;
+    pinIndex = index;
+    const marker = chapters[index].querySelector('.hotspot');
+    pin.setAttribute('aria-label', marker.textContent.trim());
+    // Track the lamp, window and bonnet in the original 16:9 frame.
+    const fraction = clamp(chapterPosition / 0.83);
+    const points = index === 0 ? [[0, .35, .46], [.33, .06, .46]]
+      : index === 1 ? [[.32, .50, .33], [.81, .40, .33]]
+      : [[.80, .82, .49], [1, .70, .50]];
+    const [a,b] = points;
+    const mix = clamp((fraction - a[0]) / (b[0] - a[0]));
+    const box = orbit.media.getBoundingClientRect();
+    const stageBox = orbit.stage.getBoundingClientRect();
+    const scale = matchMedia('(orientation: portrait)').matches
+      ? Math.min(box.width / 16, box.height / 9) : Math.max(box.width / 16, box.height / 9);
+    const x = box.left - stageBox.left + box.width / 2 + (a[1] + mix * (b[1] - a[1]) - .5) * scale * 16;
+    const y = box.top - stageBox.top + box.height / 2 + (a[2] + mix * (b[2] - a[2]) - .5) * scale * 9;
+    pin.style.left = Math.max(24, Math.min(stageBox.width - 24, x)) + 'px';
+    pin.style.top = y + 'px';
     const boundary = Math.min(...breaks.map(point => Math.abs(chapterPosition - point)));
     const opacity = 0.65 + 0.35 * clamp(boundary / 0.024);
     chapters.forEach((chapter, number) => {
@@ -102,7 +124,7 @@
         const { section, stage } = film;
         const interval = Math.max(1, section.offsetHeight - stage.offsetHeight);
         const top = section.getBoundingClientRect().top;
-        const header = document.querySelector('.masthead').offsetHeight;
+        const header = parseFloat(getComputedStyle(stage).top) || 0;
         film.progress = clamp((header - top) / interval);
         if (section === hero) showChapter(film.progress);
         const incoming = section !== hero;
@@ -118,7 +140,8 @@
         const substantial = incoming ? 0.95 : 0.83;
         const start = incoming ? 0.085 : 0;
         const end = Math.max(0, (film.video.duration || 0) - 1 / 24);
-        film.target = clamp((film.progress - start) / (substantial - start)) * end;
+        const firstFrame = incoming ? 0 : Math.min(end, rearStart);
+        film.target = firstFrame + clamp((film.progress - start) / (substantial - start)) * (end - firstFrame);
       }
       if (!film.ready || film.video.seeking) continue;
       const gap = film.target - film.video.currentTime;
@@ -168,7 +191,7 @@
     }
     film.callback = video.requestVideoFrameCallback((_, frame) => {
       if (token !== version || !film.ready) return;
-      if (!appleTouch || (film.unlocked && frame.mediaTime > 1 / 24)) {
+      if ((film.section !== hero || frame.mediaTime >= rearStart - 1 / 24) && (!appleTouch || (film.unlocked && frame.mediaTime > 1 / 24))) {
         media.classList.add('is-painted');
         film.frameTime = frame.mediaTime;
         paintSurround(film, video);
@@ -190,7 +213,7 @@
     film.controller = controller;
     try {
       const size = phone ? 'phone' : 'desktop';
-      const response = await fetch(`media/${section.dataset.film}-${size}.mp4`, { signal: controller.signal });
+      const response = await fetch(`${section.dataset.film}-${size}.mp4`, { signal: controller.signal });
       if (!response.ok) throw new Error('Video unavailable');
       const blob = await response.blob();
       if (token !== version || motion.matches) return;
@@ -277,6 +300,17 @@
       }
     }, { rootMargin: `${Math.round(viewportHeight * 1.5)}px 0px` });
     observed.observe(films[1].section);
+  }
+
+  for (const marker of document.querySelectorAll('[data-service]')) {
+    const dialog = document.getElementById(marker.dataset.service);
+    marker.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right ||
+          event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    });
   }
 
   function rememberGesture() {
