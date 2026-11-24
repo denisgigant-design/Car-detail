@@ -1,25 +1,12 @@
-# CAR DETAIL — Continuous Scroll Experience
+# Greg's Details — static campaign site
 
-This edition uses one pinned camera stage with four reversible, scroll-driven scenes:
+Open with any static HTTP server, e.g. `python -m http.server 8000 -d site`. Upload the complete `site/` directory to your own host. No framework, dependencies, publishing or external resources.
 
-1. Exterior washing (dirty → foam → live procedurally drawn water spray → rinsed → clean).
-2. Paint inspection and polishing (whole car → scratched close-up → independently moving buffer → restored shine).
-3. Interior (a second car enters → camera pushes into the cabin → moving vacuum and clean reveal).
-4. Taillight restoration (camera pans to rear lens → scratches → cleaning → gloss reveal).
+## Provenance
+Original source: `../cinematic/assets/master_original.mp4` (user supplied). All images in `site/media` are extracted frames of this film, not claims of real detailing work. Both H.264 website encodes are locally derived from that original. No new Higgsfield content was created. The project log states other prepared illustrative stills have **not** been approved, so they are intentionally excluded.
 
-All four respond to mouse wheel, touch scroll, or keyboard scrolling. Scrollbars and progress bars are hidden, and nothing autoplay loops. One scroll-controlled sticky camera stage avoids four detached slide-like panels. No external JS libraries, APIs, trackers, or paid assets.
+## Remaining creative approvals
+The brief calls for distinct exterior wash, interior care, paint correction before/after, and headlight restoration scenes. Those existing stills are unapproved. This site uses film frames and typography instead. Approving existing local stills has no generation cost; any new Higgsfield media would require a quoted model-specific credit price before proceeding. No new media ordered.
 
-## Installation
-
-To publish on GitHub Pages, upload **the contents** of this ZIP to the repo root: `index.html`, `style.css`, `script.js`, and `Assets/` (capital A). Do not upload the containing folder as a folder. `index.html` replaces the previous homepage. Alternatively, use the standalone HTML file from the ZIP as `index.html` (rename it).
-
-## Things to customize before going live
-
-- Email link currently uses `YOUR-EMAIL@example.com`; replace it in `index.html`.
-- WhatsApp link uses a deliberately invalid `353000000000`; replace with your real number in international format.
-- Deep vacuum and taillight restoration are labeled "EXTRA" because prices were not confirmed.
-- The Mini Detail (€90) and Full Detail (€200) prices reflect the supplied amounts.
-
-## Visual scope and important limitations
-
-This is a scroll-driven **2.5D** composition, not genuine tracked 3D cinematography. Water is drawn procedurally (its droplets follow the scroll position rather than autoplay). The polishing, vacuum, and taillight images are original source assets; not high-fidelity tracked footage. The final polish image and taillight image are generated assets, not motion video. The movement is real and reversible, but precisely matched photorealistic video/3D would require a bespoke matching frame sequence or rendered footage. The website was not published on your behalf.
+## Limitations
+The film is a partial orbit, not a full 360. No verified service results or pricing were provided. A real iPhone and its low-power seeking behavior have not been tested; poster fallback remains visible if video fails to load. The existing film is 24fps, 1280x720, and has untagged source colour metadata; site encodes are tagged BT.709 limited range.
